@@ -6,7 +6,9 @@ services:
   - docker
 
 
-before_script: pip install docker-compose
+before_script: 
+  - pip install docker-compose
+  - cp ./app/recipe_project/secret_settings.py /app/recipe_project/
 
 script:
   - docker-compose run app sh -c "python manage.py test && flake8"
